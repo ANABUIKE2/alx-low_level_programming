@@ -2,15 +2,10 @@
 #include <unistd.h>
 
 /**
+ * main - Entry point
  *
- *  * main - Entry point
- *
- *   *
- *
- *    * Return: Always 1 (failure)
- *
- *     */
-
+ * Return: Always 1 (failure)
+ */
 int main(void)
 {
 
