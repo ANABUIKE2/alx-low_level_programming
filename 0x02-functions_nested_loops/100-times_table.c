@@ -1,70 +1,47 @@
 #include "main.h"
 
 /**
- * countd - count how many digits are present in an integer
- *
- * @n: the integer to count
- *
- * Return: number of digits in @n
+ * print_times_table - prints the n times table, starting with 0
+ * @n: number of the times table
  */
-int countd(int n)
+void print_times_table(int n)
 {
-	int c = 0;
+	int i, j, k;
 
-
-	do {
-		n /= 10;
-		c++;
-	} while (n > 0);
-	return (c);
-}
-
-/**
- * putspace - _putchar(' ')
- *
- * @n: number of spaces to put
- *
- * Return: void
- */
-void putspace(int n)
-{
-	/* rows, columns, multiple */
-	int r, c, m;
-
-	if (n > 15 || n < 0)
-		return;
-	for (r = 0; r <= n; r++)
+	if (n >= 0 && n <= 15)
 	{
-		for (c = 0; c <= n; c++)
+		for (i = 0; i <= n; i++)
 		{
-			m = r * c;
-			if (c == 0)
+			for (j = 0; j <= n; j++)
 			{
-				_putchar('0');
-				continue;
+				k = j * i;
+				if (j == 0)
+				{
+					_putchar(k + '0');
+				} else if (k < 10 && j != 0)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar(k + '0');
+				} else if (k >= 10 && k < 100)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+					_putchar((k / 10) + '0');
+					_putchar((k % 10) + '0');
+				} else if (k >= 100)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar((k / 100) + '0');
+					_putchar(((k / 10) % 10) + '0');
+					_putchar((k % 10) + '0');
+				}
 			}
-			_putchar(',');
-			switch (countd(m))
-			{
-			case 1:
-				putspace(3);
-				_putchar(48 + (m % 10));
-				break;
-			case 2:
-				putspace(2);
-				_putchar(48 + ((m / 10) % 10));
-				_putchar(48 + (m % 10));
-				break;
-			case 3:
-				putspace(1);
-				_putchar(48 + ((m / 10) / 10));
-				_putchar(48 + ((m / 10) % 10));
-				_putchar(48 + (m % 10));
-				break;
-			default:
-				break;
-			}
+			_putchar('\n');
 		}
-		_putchar('\n');
 	}
 }
